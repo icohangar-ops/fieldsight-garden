@@ -1,0 +1,458 @@
+{
+  "version": 1,
+  "verified": "Source URLs returned HTTP 200 on 2026-10-06; wording is a short paraphrase of each page.",
+  "disclaimer": "Guidance is general and for home gardeners. Diagnosis from one photo can be wrong; confirm with your local extension office before removing plants or spraying. Always read and follow pesticide labels.",
+  "sources": {
+    "umn_apple_scab": {
+      "title": "Apple scab",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/apple-scab"
+    },
+    "umn_cedar_apple_rust": {
+      "title": "Cedar-apple rust",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/cedar-apple-rust"
+    },
+    "umn_bacterial_spot": {
+      "title": "Bacterial spot of tomato and pepper",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/bacterial-spot-of-tomato-and-pepper"
+    },
+    "umn_gray_leaf_spot": {
+      "title": "Gray leaf spot on corn",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/crop-production/corn/gray-leaf-spot-on-corn"
+    },
+    "umn_nclb": {
+      "title": "Northern corn leaf blight",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/crop-production/corn/northern-corn-leaf-blight"
+    },
+    "umn_common_rust": {
+      "title": "Common rust on corn",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/crop-production/corn/common-rust-on-corn"
+    },
+    "osu_black_rot": {
+      "title": "Grape black rot (PLPATH-FRU-24)",
+      "publisher": "Ohio State University Extension (Ohioline)",
+      "url": "https://ohioline.osu.edu/factsheet/plpath-fru-24"
+    },
+    "umass_black_rot": {
+      "title": "Grape IPM: Black rot",
+      "publisher": "UMass Amherst Extension",
+      "url": "https://www.umass.edu/agriculture-food-environment/fruit/fact-sheets/grape-ipm-black-rot"
+    },
+    "umn_early_blight": {
+      "title": "Early blight in tomato and potato",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/early-blight-in-tomato-and-potato"
+    },
+    "umn_late_blight": {
+      "title": "Late blight",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/late-blight"
+    },
+    "uw_late_blight": {
+      "title": "Late blight",
+      "publisher": "University of Wisconsin-Madison Extension",
+      "url": "https://hort.extension.wisc.edu/articles/late-blight/"
+    },
+    "umn_cucurbit_pm": {
+      "title": "Powdery mildew of cucurbits",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/powdery-mildew-of-cucurbits"
+    },
+    "ucipm_pm_veg": {
+      "title": "Powdery mildew on vegetables",
+      "publisher": "UC Statewide IPM Program",
+      "url": "https://ipm.ucanr.edu/home-and-landscape/powdery-mildew-on-vegetables/"
+    },
+    "umn_tomato_leaf_spots": {
+      "title": "Tomato leaf spot diseases",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/tomato-leaf-spot-diseases"
+    },
+    "uw_septoria": {
+      "title": "Tomato Septoria leaf spot",
+      "publisher": "UW-Madison Vegetable Pathology",
+      "url": "https://vegpath.plantpath.wisc.edu/diseases/tomato-septoria-leaf-spot/"
+    },
+    "umn_leaf_mold": {
+      "title": "Tomato leaf mold",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/tomato-leaf-mold"
+    },
+    "umn_tomato_viruses": {
+      "title": "Tomato viruses",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/tomato-viruses"
+    },
+    "ucipm_tylcv": {
+      "title": "Tomato yellow leaf curl",
+      "publisher": "UC Statewide IPM Program",
+      "url": "https://ipm.ucanr.edu/agriculture/tomato/tomato-yellow-leaf-curl/"
+    },
+    "umn_grow_tomatoes": {
+      "title": "Growing tomatoes",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-tomatoes"
+    },
+    "umn_grow_apples": {
+      "title": "Growing apples",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-apples"
+    },
+    "umn_grow_blueberries": {
+      "title": "Growing blueberries in the home garden",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-blueberries-in-the-home-garden"
+    },
+    "umn_grow_raspberries": {
+      "title": "Growing raspberries in the home garden",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-raspberries-in-the-home-garden"
+    },
+    "umn_grow_strawberries": {
+      "title": "Growing strawberries in the home garden",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-strawberries-in-the-home-garden"
+    },
+    "umn_grow_grapes": {
+      "title": "Growing grapes in the home garden",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-grapes-in-the-home-garden"
+    },
+    "umn_grow_peppers": {
+      "title": "Growing peppers",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-peppers"
+    },
+    "umn_grow_stone_fruit": {
+      "title": "Growing stone fruits in the home garden",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-stone-fruits-in-the-home-garden"
+    },
+    "umn_soybean": {
+      "title": "Soybean production",
+      "publisher": "University of Minnesota Extension",
+      "url": "https://extension.umn.edu/agriculture/crop-production/soybean"
+    },
+    "cpn_encyclopedia": {
+      "title": "Field crop disease encyclopedia",
+      "publisher": "Crop Protection Network (land-grant universities)",
+      "url": "https://cropprotectionnetwork.org/encyclopedia"
+    }
+  },
+  "fixes": {
+    "apple healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Water deeply at the base during dry spells.",
+        "Rake up fallen leaves and fruit in autumn to cut next year's disease.",
+        "Scout weekly for spots, curling or pests, especially after wet weather."
+      ],
+      "sources": [
+        "umn_grow_apples"
+      ]
+    },
+    "apple rust": {
+      "type": "fungal",
+      "steps": [
+        "Pick off badly spotted leaves; rust needs nearby junipers or red cedars to complete its cycle.",
+        "Cut off orange or brown galls on nearby junipers in late winter, before they swell in spring rain.",
+        "For new plantings, choose rust-resistant apple varieties; labeled fungicides only protect new leaves in spring."
+      ],
+      "sources": [
+        "umn_cedar_apple_rust"
+      ]
+    },
+    "apple scab": {
+      "type": "fungal",
+      "steps": [
+        "Rake up and remove fallen apple leaves this autumn; the scab fungus overwinters in them.",
+        "Prune for an open canopy so leaves dry fast after rain.",
+        "For a chronic problem, plant scab-resistant varieties, or start a labeled fungicide at bud break next spring."
+      ],
+      "sources": [
+        "umn_apple_scab"
+      ]
+    },
+    "bell pepper healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Keep soil evenly moist and water at the base.",
+        "Mulch around plants to hold moisture and keep soil off the leaves.",
+        "Check leaf undersides weekly for spots or aphids."
+      ],
+      "sources": [
+        "umn_grow_peppers"
+      ]
+    },
+    "bell pepper leaf spot": {
+      "type": "bacterial",
+      "steps": [
+        "Remove spotted leaves and avoid touching plants while they are wet; bacteria spread by splash and hands.",
+        "Water at the soil, not the leaves, and mulch to stop soil splashing up.",
+        "Next year, rotate peppers and tomatoes to a new bed and use clean seed or transplants."
+      ],
+      "sources": [
+        "umn_bacterial_spot"
+      ]
+    },
+    "blueberry healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Keep soil moist and acidic, and mulch with wood chips or pine needles.",
+        "Prune out old, weak or dead canes in late winter.",
+        "Watch for spotted or reddening leaves and shriveled berries."
+      ],
+      "sources": [
+        "umn_grow_blueberries"
+      ]
+    },
+    "cherry healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Water deeply during dry spells and keep mulch off the trunk.",
+        "Prune in late winter for airflow and remove dead or cracked wood.",
+        "Rake up fallen leaves in autumn to reduce leaf-spot disease next year."
+      ],
+      "sources": [
+        "umn_grow_stone_fruit"
+      ]
+    },
+    "corn gray leaf spot": {
+      "type": "fungal",
+      "steps": [
+        "Note the long, narrow, gray-tan lesions between the leaf veins; it spreads from infected corn residue.",
+        "After harvest, chop and bury or remove corn residue, and rotate corn to a different spot next year.",
+        "Choose resistant hybrids next season; fungicides are rarely worthwhile in a home garden."
+      ],
+      "sources": [
+        "umn_gray_leaf_spot",
+        "cpn_encyclopedia"
+      ]
+    },
+    "corn leaf blight": {
+      "type": "fungal",
+      "steps": [
+        "Long cigar-shaped tan lesions usually mean northern corn leaf blight, which spreads from old corn residue.",
+        "Remove or bury corn debris after harvest and rotate corn elsewhere next year.",
+        "Plant resistant hybrids next season; in a small garden the crop usually still yields."
+      ],
+      "sources": [
+        "umn_nclb",
+        "cpn_encyclopedia"
+      ]
+    },
+    "corn rust": {
+      "type": "fungal",
+      "steps": [
+        "Small, powdery, rust-colored pustules on both leaf sides are common rust; spores blow in on the wind.",
+        "Late-season rust rarely hurts sweet corn yield, so just keep the plants watered and fed.",
+        "Choose rust-resistant varieties next year if it shows up early and heavily."
+      ],
+      "sources": [
+        "umn_common_rust",
+        "cpn_encyclopedia"
+      ]
+    },
+    "grape black rot": {
+      "type": "fungal",
+      "steps": [
+        "Remove spotted leaves and any shriveled, black 'mummy' berries now, and bag them; don't compost them.",
+        "In winter, prune out infected canes and tendrils and rake up mummies under the vine.",
+        "Keep vines sunny and open; for repeat problems, use a fungicide labeled for black rot from before bloom."
+      ],
+      "sources": [
+        "osu_black_rot",
+        "umass_black_rot"
+      ]
+    },
+    "grape healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Train vines for sun and airflow.",
+        "Prune hard in late winter and remove old clusters and debris.",
+        "Scout weekly from bloom for spots on leaves and berries."
+      ],
+      "sources": [
+        "umn_grow_grapes"
+      ]
+    },
+    "peach healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Water deeply during dry spells and mulch, keeping it off the trunk.",
+        "Prune to an open center in late winter for light and airflow.",
+        "Watch spring leaves for red, puckered curl and remove rotting fruit promptly."
+      ],
+      "sources": [
+        "umn_grow_stone_fruit"
+      ]
+    },
+    "potato early blight": {
+      "type": "fungal",
+      "steps": [
+        "Remove the lower leaves with target-like brown rings and keep plants well fed; stressed plants get it worse.",
+        "Water at the soil in the morning and mulch to stop splash.",
+        "Rotate potatoes and tomatoes out of this bed for at least two years. If it keeps spreading, use a fungicide labeled for early blight on potatoes and follow the label exactly."
+      ],
+      "sources": [
+        "umn_early_blight"
+      ]
+    },
+    "potato late blight": {
+      "type": "oomycete",
+      "steps": [
+        "Act today: late blight spreads fast. Pull infected plants, bag them and put them in the trash, not the compost.",
+        "Check nearby potatoes and tomatoes daily for greasy dark blotches with white fuzz underneath.",
+        "Next year, plant certified disease-free seed potatoes and destroy any volunteer potatoes."
+      ],
+      "sources": [
+        "umn_late_blight",
+        "uw_late_blight"
+      ]
+    },
+    "raspberry healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Keep rows narrow and thinned for airflow.",
+        "After harvest, cut fruited floricanes to the ground.",
+        "Water at the base and watch for spotted canes or wilting tips."
+      ],
+      "sources": [
+        "umn_grow_raspberries"
+      ]
+    },
+    "soybean healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Scout every week or two, checking leaves top and bottom.",
+        "Rotate soybeans with a non-legume crop to reduce soil-borne disease.",
+        "If spots appear, compare them against an extension disease guide before treating."
+      ],
+      "sources": [
+        "umn_soybean",
+        "cpn_encyclopedia"
+      ]
+    },
+    "squash powdery mildew": {
+      "type": "fungal",
+      "steps": [
+        "Remove the worst white-dusted leaves, but keep enough foliage to shade the fruit.",
+        "Give plants sun and space, and water at the base.",
+        "Plant mildew-resistant varieties next year. If it keeps spreading, use a fungicide labeled for powdery mildew on squash and follow the label exactly."
+      ],
+      "sources": [
+        "umn_cucurbit_pm",
+        "ucipm_pm_veg"
+      ]
+    },
+    "strawberry healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Water at the base in the morning so leaves dry quickly.",
+        "Mulch with straw to keep berries off the soil.",
+        "Thin runners and remove old leaves after harvest for airflow."
+      ],
+      "sources": [
+        "umn_grow_strawberries"
+      ]
+    },
+    "tomato bacterial spot": {
+      "type": "bacterial",
+      "steps": [
+        "Pick off spotted leaves when plants are dry and wash your hands after; bacteria spread by splash and touch.",
+        "Water at the soil, mulch, and stake plants so leaves dry fast.",
+        "Rotate tomatoes and peppers to a new bed for 2 to 3 years, and don't save seed from these plants."
+      ],
+      "sources": [
+        "umn_bacterial_spot",
+        "umn_tomato_leaf_spots"
+      ]
+    },
+    "tomato early blight": {
+      "type": "fungal",
+      "steps": [
+        "Pinch off lower leaves with brown target-ring spots, up to a third of the plant.",
+        "Mulch the soil and water at the base in the morning; stake for airflow.",
+        "Rotate tomatoes out of this bed next year. If it keeps spreading, use a fungicide labeled for early blight on tomatoes and follow the label exactly."
+      ],
+      "sources": [
+        "umn_early_blight",
+        "umn_tomato_leaf_spots"
+      ]
+    },
+    "tomato healthy": {
+      "type": "healthy",
+      "steps": [
+        "Looks healthy. Water deeply at the base and keep leaves dry.",
+        "Mulch the soil and stake or cage the plant for airflow.",
+        "Check lower leaves weekly for spots and pinch off any you find early."
+      ],
+      "sources": [
+        "umn_grow_tomatoes",
+        "umn_tomato_leaf_spots"
+      ]
+    },
+    "tomato late blight": {
+      "type": "oomycete",
+      "steps": [
+        "Act today: late blight spreads fast. Pull infected plants, bag them and put them in the trash, not the compost.",
+        "Check nearby tomatoes and potatoes daily for greasy dark blotches and white fuzz under the leaves.",
+        "Next year, choose late-blight-resistant varieties and remove volunteer tomatoes and potatoes."
+      ],
+      "sources": [
+        "umn_late_blight",
+        "uw_late_blight"
+      ]
+    },
+    "tomato leaf mold": {
+      "type": "fungal",
+      "steps": [
+        "Remove leaves with yellow tops and olive-brown fuzz underneath.",
+        "Cut humidity: space and prune plants, and ventilate greenhouses or high tunnels.",
+        "Water at the soil, and choose leaf-mold-resistant varieties next time."
+      ],
+      "sources": [
+        "umn_leaf_mold"
+      ]
+    },
+    "tomato mosaic virus": {
+      "type": "viral",
+      "steps": [
+        "There is no cure: remove and bag the mottled plant so it can't spread to others.",
+        "Wash hands and disinfect tools and stakes; the virus spreads by touch.",
+        "Plant resistant varieties and clean seed next season."
+      ],
+      "sources": [
+        "umn_tomato_viruses"
+      ]
+    },
+    "tomato septoria leaf spot": {
+      "type": "fungal",
+      "steps": [
+        "Pinch off lower leaves with many small, dark-edged spots, up to a third of the plant.",
+        "Water at the base, mulch, and stake to keep leaves dry; remove plant debris at season end.",
+        "Rotate tomatoes for 1 to 2 years. If it keeps spreading, use a fungicide labeled for Septoria leaf spot on tomatoes and follow the label exactly."
+      ],
+      "sources": [
+        "umn_tomato_leaf_spots",
+        "uw_septoria"
+      ]
+    },
+    "tomato yellow leaf curl virus": {
+      "type": "viral",
+      "steps": [
+        "There is no cure: remove and bag curled, yellowed plants, especially young ones.",
+        "Control whiteflies, which spread this virus; check leaf undersides and use reflective mulch or row covers.",
+        "Plant resistant varieties and avoid planting next to infected crops."
+      ],
+      "sources": [
+        "ucipm_tylcv"
+      ]
+    }
+  }
+}

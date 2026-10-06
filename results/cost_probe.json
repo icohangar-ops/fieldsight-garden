@@ -1,0 +1,220 @@
+{
+  "offline": {
+    "train": {
+      "n": 2026,
+      "qwen_image_tokens_mean": 173.27936821322803,
+      "qwen_image_tokens_max": 256,
+      "inkling_image_tokens_mean": 118.2324777887463,
+      "qwen_ft_prompt_tokens_sum": 407792,
+      "qwen_ft_prompt_tokens_mean": 201.27936821322803,
+      "qwen_zs_prompt_tokens_sum": 709666,
+      "qwen_zs_prompt_tokens_mean": 350.27936821322805,
+      "inkling_zs_prompt_tokens_sum": 590037,
+      "inkling_zs_prompt_tokens_mean": 291.2324777887463,
+      "train_datum_tokens_sum": 415913,
+      "train_datum_tokens_mean": 205.2877591312932
+    },
+    "val": {
+      "n": 150,
+      "qwen_image_tokens_mean": 175.85333333333332,
+      "qwen_image_tokens_max": 256,
+      "inkling_image_tokens_mean": 119.38,
+      "qwen_ft_prompt_tokens_sum": 30578,
+      "qwen_ft_prompt_tokens_mean": 203.85333333333332,
+      "qwen_zs_prompt_tokens_sum": 52928,
+      "qwen_zs_prompt_tokens_mean": 352.85333333333335,
+      "inkling_zs_prompt_tokens_sum": 43857,
+      "inkling_zs_prompt_tokens_mean": 292.38
+    },
+    "test": {
+      "n": 300,
+      "qwen_image_tokens_mean": 175.38333333333333,
+      "qwen_image_tokens_max": 256,
+      "inkling_image_tokens_mean": 119.24666666666667,
+      "qwen_ft_prompt_tokens_sum": 61015,
+      "qwen_ft_prompt_tokens_mean": 203.38333333333333,
+      "qwen_zs_prompt_tokens_sum": 105715,
+      "qwen_zs_prompt_tokens_mean": 352.3833333333333,
+      "inkling_zs_prompt_tokens_sum": 87674,
+      "inkling_zs_prompt_tokens_mean": 292.24666666666667
+    }
+  },
+  "live": {
+    "qwen_sample": [
+      {
+        "id": "apple_healthy__0be82927f1",
+        "gold": "apple healthy",
+        "text": "apple healthy",
+        "pred_strict": "apple healthy",
+        "pred_lenient": "apple healthy",
+        "prompt_tokens": 417,
+        "image_tokens": 240,
+        "cached_tokens": 0,
+        "output_tokens": 3,
+        "stop_reason": "stop",
+        "latency_s": 3.986,
+        "usd": 0.000229185
+      },
+      {
+        "id": "apple_rust__06e451afc4",
+        "gold": "apple rust",
+        "text": "apple scab",
+        "pred_strict": "apple scab",
+        "pred_lenient": "apple scab",
+        "prompt_tokens": 353,
+        "image_tokens": 176,
+        "cached_tokens": 128,
+        "output_tokens": 4,
+        "stop_reason": "stop",
+        "latency_s": 3.828,
+        "usd": 0.000140664
+      },
+      {
+        "id": "apple_scab__a10dca4b59",
+        "gold": "apple scab",
+        "text": "apple rust",
+        "pred_strict": "apple rust",
+        "pred_lenient": "apple rust",
+        "prompt_tokens": 385,
+        "image_tokens": 208,
+        "cached_tokens": 128,
+        "output_tokens": 3,
+        "stop_reason": "stop",
+        "latency_s": 2.886,
+        "usd": 0.00015660900000000002
+      },
+      {
+        "id": "bell_pepper_healthy__dbce58a0f7",
+        "gold": "bell pepper healthy",
+        "text": "bell pepper healthy",
+        "pred_strict": "bell pepper healthy",
+        "pred_lenient": "bell pepper healthy",
+        "prompt_tokens": 369,
+        "image_tokens": 192,
+        "cached_tokens": 128,
+        "output_tokens": 4,
+        "stop_reason": "stop",
+        "latency_s": 2.893,
+        "usd": 0.00014930400000000003
+      },
+      {
+        "id": "bell_pepper_leaf_spot__44140a4d80",
+        "gold": "bell pepper leaf spot",
+        "text": "tomato early blight",
+        "pred_strict": "tomato early blight",
+        "pred_lenient": "tomato early blight",
+        "prompt_tokens": 369,
+        "image_tokens": 192,
+        "cached_tokens": 128,
+        "output_tokens": 6,
+        "stop_reason": "stop",
+        "latency_s": 3.286,
+        "usd": 0.000151974
+      }
+    ],
+    "inkling_sample": [
+      {
+        "id": "apple_healthy__0be82927f1",
+        "gold": "apple healthy",
+        "text": "apple healthy",
+        "pred_strict": "apple healthy",
+        "pred_lenient": "apple healthy",
+        "prompt_tokens": 329,
+        "image_tokens": 156,
+        "cached_tokens": 0,
+        "output_tokens": 6,
+        "stop_reason": "stop",
+        "latency_s": 3.743,
+        "usd": 0.00064331
+      },
+      {
+        "id": "apple_rust__06e451afc4",
+        "gold": "apple rust",
+        "text": "apple rust",
+        "pred_strict": "apple rust",
+        "pred_lenient": "apple rust",
+        "prompt_tokens": 290,
+        "image_tokens": 117,
+        "cached_tokens": 128,
+        "output_tokens": 6,
+        "stop_reason": "stop",
+        "latency_s": 2.805,
+        "usd": 0.000378892
+      },
+      {
+        "id": "apple_scab__a10dca4b59",
+        "gold": "apple scab",
+        "text": "apple scab",
+        "pred_strict": "apple scab",
+        "pred_lenient": "apple scab",
+        "prompt_tokens": 316,
+        "image_tokens": 143,
+        "cached_tokens": 128,
+        "output_tokens": 7,
+        "stop_reason": "stop",
+        "latency_s": 2.846,
+        "usd": 0.000432192
+      }
+    ],
+    "qwen_forward": {
+      "n": 5,
+      "tokens": 1162,
+      "target_tokens": 19.0,
+      "mean_target_nll": 2.1470398400959216,
+      "latency_s": 22.975,
+      "usd": 0.001367674,
+      "metrics": {
+        "e_min_violation:mean": -0.9993115663528442,
+        "e_frac_with_tokens:mean": 0.921582043170929,
+        "loss:sum": 40.79375696182251,
+        "e_max_violation:mean": 12.126334190368652,
+        "e_max_violation:max": 17.42340850830078,
+        "clock_cycle:unique": 5024853.0,
+        "e_frac_oversubscribed:mean": 0.3082031309604645
+      }
+    },
+    "worst_case_usd": 0.008753171,
+    "inkling_effort": 0.0,
+    "probe_usd": 0.0036498040000000004
+  },
+  "projection": {
+    "train_tokens_per_epoch": 415913,
+    "train_usd": 1.468588803,
+    "val_evals_usd": 0.10868472000000001,
+    "eval_base_qwen_usd": 0.05868810000000001,
+    "eval_ft_qwen_usd": 0.0361521,
+    "eval_inkling_usd": 0.05761412666666666,
+    "eval_inkling_full_test_usd": 0.17284238000000002,
+    "checkpoint_storage_usd": 0.05,
+    "probe_usd": 0.0036498040000000004,
+    "total_usd": 1.7833776536666668,
+    "per_1k_photos_usd": {
+      "base_qwen_zero_shot": 0.195627,
+      "ft_qwen": 0.120507,
+      "inkling_zero_shot": 0.5761412666666667
+    },
+    "assumptions": {
+      "epochs": 3,
+      "inkling_eval_n": 100,
+      "n_val_evals_during_training": 6,
+      "qwen_zero_shot_output_tokens": 4,
+      "ft_output_tokens": 8.0,
+      "inkling_output_tokens": 6.333333333333333,
+      "no_prefix_cache_discount_assumed": true,
+      "prices_per_1M": {
+        "qwen": {
+          "prefill": 0.54,
+          "cached_prefill": 0.108,
+          "sample": 1.335,
+          "train": 1.177
+        },
+        "inkling": {
+          "prefill": 1.87,
+          "cached_prefill": 0.374,
+          "sample": 4.68,
+          "train": 5.61
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[ft_qwen] 300 items in 97.3s
+{
+  "model": "ft_qwen",
+  "model_id": "tinker://f5090c0f-f54a-53c7-8aa7-e6486f065aef:train:0/sampler_weights/final",
+  "n": 300,
+  "errors": 0,
+  "concurrency": 8,
+  "acc_strict": 0.7966666666666666,
+  "acc_strict_ci95": [
+    0.75,
+    0.84
+  ],
+  "macro_f1_strict": 0.7846239585810386,
+  "invalid_rate_strict": 0.0,
+  "acc_lenient": 0.7966666666666666,
+  "acc_lenient_ci95": [
+    0.75,
+    0.84
+  ],
+  "macro_f1_lenient": 0.7846239585810386,
+  "invalid_rate_lenient": 0.0,
+  "latency_mean_s": 2.562089433533183,
+  "latency_p50_s": 2.417998427999919,
+  "latency_p95_s": 3.3800372850486387,
+  "mean_prompt_tokens": 203.38333333333333,
+  "mean_image_tokens": 175.38333333333333,
+  "mean_cached_tokens": 43.52,
+  "mean_output_tokens": 5.033333333333333,
+  "eval_usd": 0.029323758000000002,
+  "usd_per_1k_photos": 0.09774586,
+  "usd_per_1k_correct": 0.12269354811715481,
+  "subset": "full"
+}
+| model | subset | n | acc (lenient) [95% CI] | acc strict | macro-F1 | invalid | p50 s | p95 s | mean s | $/1k photos | $/1k correct |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ft_qwen | full | 300 | 0.797 [0.750, 0.840] | 0.797 | 0.785 | 0.000 | 2.42 | 3.38 | 2.56 | 0.098 | 0.123 |
+
+Total eval spend (estimated from token counts): $0.0293
+wrote /workspace/fieldsight-garden/results/eval-20261006-094057

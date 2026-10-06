@@ -1,0 +1,43 @@
+{
+  "split": "val",
+  "n_rows": 150,
+  "inkling_n": 150,
+  "seed": 0,
+  "inkling_effort": 0.0,
+  "summaries": [
+    {
+      "model": "ft_qwen",
+      "model_id": "tinker://f5090c0f-f54a-53c7-8aa7-e6486f065aef:train:0/sampler_weights/final",
+      "n": 150,
+      "errors": 0,
+      "concurrency": 8,
+      "acc_strict": 0.8333333333333334,
+      "acc_strict_ci95": [
+        0.7733333333333333,
+        0.8933333333333333
+      ],
+      "macro_f1_strict": 0.8186588889203269,
+      "invalid_rate_strict": 0.006666666666666667,
+      "acc_lenient": 0.8333333333333334,
+      "acc_lenient_ci95": [
+        0.7733333333333333,
+        0.8933333333333333
+      ],
+      "macro_f1_lenient": 0.8186588889203269,
+      "invalid_rate_lenient": 0.006666666666666667,
+      "latency_mean_s": 2.6135968539734797,
+      "latency_p50_s": 2.3496631079997314,
+      "latency_p95_s": 5.293852197549841,
+      "mean_prompt_tokens": 203.85333333333332,
+      "mean_image_tokens": 175.85333333333332,
+      "mean_cached_tokens": 23.04,
+      "mean_output_tokens": 4.986666666666666,
+      "eval_usd": 0.016017708,
+      "usd_per_1k_photos": 0.10678472,
+      "usd_per_1k_correct": 0.128141664,
+      "subset": "full"
+    }
+  ],
+  "head_to_head": [],
+  "total_eval_usd": 0.016017708
+}

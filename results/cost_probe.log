@@ -1,0 +1,56 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[offline] train: {"n": 2026, "qwen_image_tokens_mean": 173.3, "qwen_image_tokens_max": 256, "inkling_image_tokens_mean": 118.2, "qwen_ft_prompt_tokens_sum": 407792, "qwen_ft_prompt_tokens_mean": 201.3, "qwen_zs_prompt_tokens_sum": 709666, "qwen_zs_prompt_tokens_mean": 350.3, "inkling_zs_prompt_tokens_sum": 590037, "inkling_zs_prompt_tokens_mean": 291.2, "train_datum_tokens_sum": 415913, "train_datum_tokens_mean": 205.3}
+[offline] val: {"n": 150, "qwen_image_tokens_mean": 175.9, "qwen_image_tokens_max": 256, "inkling_image_tokens_mean": 119.4, "qwen_ft_prompt_tokens_sum": 30578, "qwen_ft_prompt_tokens_mean": 203.9, "qwen_zs_prompt_tokens_sum": 52928, "qwen_zs_prompt_tokens_mean": 352.9, "inkling_zs_prompt_tokens_sum": 43857, "inkling_zs_prompt_tokens_mean": 292.4}
+[offline] test: {"n": 300, "qwen_image_tokens_mean": 175.4, "qwen_image_tokens_max": 256, "inkling_image_tokens_mean": 119.2, "qwen_ft_prompt_tokens_sum": 61015, "qwen_ft_prompt_tokens_mean": 203.4, "qwen_zs_prompt_tokens_sum": 105715, "qwen_zs_prompt_tokens_mean": 352.4, "inkling_zs_prompt_tokens_sum": 87674, "inkling_zs_prompt_tokens_mean": 292.2}
+[live] worst-case probe spend $0.0088 (cap $0.5)
+[live] Qwen3.6-35B-A3B   3.99s p=417 img=240 cache=0 out=3 gold='apple healthy' -> 'apple healthy'
+[live] Qwen3.6-35B-A3B   3.83s p=353 img=176 cache=128 out=4 gold='apple rust' -> 'apple scab'
+[live] Qwen3.6-35B-A3B   2.89s p=385 img=208 cache=128 out=3 gold='apple scab' -> 'apple rust'
+[live] Qwen3.6-35B-A3B   2.89s p=369 img=192 cache=128 out=4 gold='bell pepper healthy' -> 'bell pepper healthy'
+[live] Qwen3.6-35B-A3B   3.29s p=369 img=192 cache=128 out=6 gold='bell pepper leaf spot' -> 'tomato early blight'
+[live] forward: 5 datums, 1162 tokens, base NLL/target-token 2.147, 22.97s
+[live]        Inkling   3.74s p=329 img=156 cache=0 out=6 gold='apple healthy' -> 'apple healthy'
+[live]        Inkling   2.81s p=290 img=117 cache=128 out=6 gold='apple rust' -> 'apple rust'
+[live]        Inkling   2.85s p=316 img=143 cache=128 out=7 gold='apple scab' -> 'apple scab'
+[live] estimated probe spend $0.0036
+[projection] {
+  "train_tokens_per_epoch": 415913,
+  "train_usd": 1.468588803,
+  "val_evals_usd": 0.10868472000000001,
+  "eval_base_qwen_usd": 0.05868810000000001,
+  "eval_ft_qwen_usd": 0.0361521,
+  "eval_inkling_usd": 0.05761412666666666,
+  "eval_inkling_full_test_usd": 0.17284238000000002,
+  "checkpoint_storage_usd": 0.05,
+  "probe_usd": 0.0036498040000000004,
+  "total_usd": 1.7833776536666668,
+  "per_1k_photos_usd": {
+    "base_qwen_zero_shot": 0.195627,
+    "ft_qwen": 0.120507,
+    "inkling_zero_shot": 0.5761412666666667
+  },
+  "assumptions": {
+    "epochs": 3,
+    "inkling_eval_n": 100,
+    "n_val_evals_during_training": 6,
+    "qwen_zero_shot_output_tokens": 4,
+    "ft_output_tokens": 8.0,
+    "inkling_output_tokens": 6.333333333333333,
+    "no_prefix_cache_discount_assumed": true,
+    "prices_per_1M": {
+      "qwen": {
+        "prefill": 0.54,
+        "cached_prefill": 0.108,
+        "sample": 1.335,
+        "train": 1.177
+      },
+      "inkling": {
+        "prefill": 1.87,
+        "cached_prefill": 0.374,
+        "sample": 4.68,
+        "train": 5.61
+      }
+    }
+  }
+}
+wrote results/cost_probe.json

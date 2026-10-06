@@ -1,0 +1,9 @@
+.venv/
+raw/
+runs/
+__pycache__/
+*.pyc
+adapters/
+data/images/
+data/hf/
+.env

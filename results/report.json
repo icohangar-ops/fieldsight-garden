@@ -1,0 +1,614 @@
+{
+  "rows": {
+    "full": [
+      {
+        "model": "ft_qwen",
+        "model_id": "",
+        "n": 300,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.7966666666666666,
+        "acc_strict_ci95": [
+          0.75,
+          0.84
+        ],
+        "macro_f1_strict": 0.7846239585810386,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.7966666666666666,
+        "acc_lenient_ci95": [
+          0.75,
+          0.84
+        ],
+        "macro_f1_lenient": 0.7846239585810386,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 2.562089433533183,
+        "latency_p50_s": 2.417998427999919,
+        "latency_p95_s": 3.3800372850486387,
+        "mean_prompt_tokens": 203.38333333333333,
+        "mean_image_tokens": 175.38333333333333,
+        "mean_cached_tokens": 43.52,
+        "mean_output_tokens": 5.033333333333333,
+        "eval_usd": 0.029323758000000002,
+        "usd_per_1k_photos": 0.09774586,
+        "usd_per_1k_correct": 0.12269354811715481,
+        "subset": "full",
+        "cost_multiple_vs_ft": 1.0
+      },
+      {
+        "model": "base_qwen_zs",
+        "model_id": "",
+        "n": 300,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.6766666666666666,
+        "acc_strict_ci95": [
+          0.6233333333333333,
+          0.7266666666666667
+        ],
+        "macro_f1_strict": 0.6525873845262545,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.6766666666666666,
+        "acc_lenient_ci95": [
+          0.6233333333333333,
+          0.7266666666666667
+        ],
+        "macro_f1_lenient": 0.6525873845262545,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 2.6335378269366627,
+        "latency_p50_s": 2.3720206304988096,
+        "latency_p95_s": 3.533388902897241,
+        "mean_prompt_tokens": 352.3833333333333,
+        "mean_image_tokens": 175.38333333333333,
+        "mean_cached_tokens": 174.93333333333334,
+        "mean_output_tokens": 5.003333333333333,
+        "eval_usd": 0.036418574999999995,
+        "usd_per_1k_photos": 0.12139525,
+        "usd_per_1k_correct": 0.17940184729064038,
+        "subset": "full",
+        "cost_multiple_vs_ft": 1.241947740804572
+      },
+      {
+        "model": "inkling_e0",
+        "model_id": "",
+        "n": 300,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.49666666666666665,
+        "acc_strict_ci95": [
+          0.44,
+          0.5533333333333333
+        ],
+        "macro_f1_strict": 0.4614260012486054,
+        "invalid_rate_strict": 0.013333333333333334,
+        "acc_lenient": 0.49666666666666665,
+        "acc_lenient_ci95": [
+          0.44,
+          0.5533333333333333
+        ],
+        "macro_f1_lenient": 0.46010912882062194,
+        "invalid_rate_lenient": 0.006666666666666667,
+        "latency_mean_s": 2.607364003766549,
+        "latency_p50_s": 2.371144455000831,
+        "latency_p95_s": 3.5495683652477967,
+        "mean_prompt_tokens": 292.24666666666667,
+        "mean_image_tokens": 119.24666666666667,
+        "mean_cached_tokens": 169.81333333333333,
+        "mean_output_tokens": 7.906666666666666,
+        "eval_usd": 0.098839116,
+        "usd_per_1k_photos": 0.32946372,
+        "usd_per_1k_correct": 0.6633497718120805,
+        "subset": "full",
+        "cost_multiple_vs_ft": 3.370615594358677
+      }
+    ],
+    "subset100": [
+      {
+        "model": "ft_qwen",
+        "model_id": "",
+        "n": 100,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.81,
+        "acc_strict_ci95": [
+          0.73,
+          0.88
+        ],
+        "macro_f1_strict": 0.7862246806691252,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.81,
+        "acc_lenient_ci95": [
+          0.73,
+          0.88
+        ],
+        "macro_f1_lenient": 0.7862246806691252,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 2.5670503945100425,
+        "latency_p50_s": 2.418351727001209,
+        "latency_p95_s": 3.4453515969986253,
+        "mean_prompt_tokens": 205.48,
+        "mean_image_tokens": 177.48,
+        "mean_cached_tokens": 42.24,
+        "mean_output_tokens": 4.91,
+        "eval_usd": 0.009926636999999999,
+        "usd_per_1k_photos": 0.09926636999999998,
+        "usd_per_1k_correct": 0.12255107407407405,
+        "subset": "subset100",
+        "cost_multiple_vs_ft": 1.0
+      },
+      {
+        "model": "base_qwen_zs",
+        "model_id": "",
+        "n": 100,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.74,
+        "acc_strict_ci95": [
+          0.65,
+          0.82
+        ],
+        "macro_f1_strict": 0.7125915237026348,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.74,
+        "acc_lenient_ci95": [
+          0.65,
+          0.82
+        ],
+        "macro_f1_lenient": 0.7125915237026348,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 2.5855437985898972,
+        "latency_p50_s": 2.3595892430003005,
+        "latency_p95_s": 3.533388902897241,
+        "mean_prompt_tokens": 354.48,
+        "mean_image_tokens": 177.48,
+        "mean_cached_tokens": 176.64,
+        "mean_output_tokens": 4.91,
+        "eval_usd": 0.012166557000000001,
+        "usd_per_1k_photos": 0.12166557000000001,
+        "usd_per_1k_correct": 0.16441293243243243,
+        "subset": "subset100",
+        "cost_multiple_vs_ft": 1.2256474171464116
+      },
+      {
+        "model": "inkling_e0",
+        "model_id": "",
+        "n": 100,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.56,
+        "acc_strict_ci95": [
+          0.46,
+          0.65
+        ],
+        "macro_f1_strict": 0.5025225803003581,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.56,
+        "acc_lenient_ci95": [
+          0.46,
+          0.65
+        ],
+        "macro_f1_lenient": 0.5025225803003581,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 2.6692222355299235,
+        "latency_p50_s": 2.3919558040015545,
+        "latency_p95_s": 3.518942522150428,
+        "mean_prompt_tokens": 293.45,
+        "mean_image_tokens": 120.45,
+        "mean_cached_tokens": 168.96,
+        "mean_output_tokens": 7.83,
+        "eval_usd": 0.033263174,
+        "usd_per_1k_photos": 0.33263174,
+        "usd_per_1k_correct": 0.59398525,
+        "subset": "subset100",
+        "cost_multiple_vs_ft": 3.3509006121609977
+      },
+      {
+        "model": "inkling_e05",
+        "model_id": "",
+        "n": 100,
+        "errors": 0,
+        "concurrency": 8,
+        "acc_strict": 0.58,
+        "acc_strict_ci95": [
+          0.48,
+          0.67
+        ],
+        "macro_f1_strict": 0.5156672545561434,
+        "invalid_rate_strict": 0.0,
+        "acc_lenient": 0.58,
+        "acc_lenient_ci95": [
+          0.48,
+          0.67
+        ],
+        "macro_f1_lenient": 0.5156672545561434,
+        "invalid_rate_lenient": 0.0,
+        "latency_mean_s": 3.6226703669499694,
+        "latency_p50_s": 3.347275597499902,
+        "latency_p95_s": 5.562808458548351,
+        "mean_prompt_tokens": 295.45,
+        "mean_image_tokens": 120.45,
+        "mean_cached_tokens": 147.2,
+        "mean_output_tokens": 90.39,
+        "eval_usd": 0.07553055,
+        "usd_per_1k_photos": 0.7553055000000001,
+        "usd_per_1k_correct": 1.3022508620689657,
+        "subset": "subset100",
+        "cost_multiple_vs_ft": 7.6088759969766215
+      }
+    ]
+  },
+  "paired": [
+    {
+      "subset": "full",
+      "pair": "ft_qwen - base_qwen_zs",
+      "acc_diff": 0.12,
+      "ci95": [
+        0.07000000000000006,
+        0.16999999999999993
+      ],
+      "n": 300
+    },
+    {
+      "subset": "full",
+      "pair": "ft_qwen - inkling_e0",
+      "acc_diff": 0.3,
+      "ci95": [
+        0.2366666666666667,
+        0.36333333333333334
+      ],
+      "n": 300
+    },
+    {
+      "subset": "subset100",
+      "pair": "ft_qwen - base_qwen_zs",
+      "acc_diff": 0.07,
+      "ci95": [
+        0.0,
+        0.14
+      ],
+      "n": 100
+    },
+    {
+      "subset": "subset100",
+      "pair": "ft_qwen - inkling_e0",
+      "acc_diff": 0.25,
+      "ci95": [
+        0.1499999999999999,
+        0.35000000000000003
+      ],
+      "n": 100
+    },
+    {
+      "subset": "subset100",
+      "pair": "ft_qwen - inkling_e05",
+      "acc_diff": 0.23,
+      "ci95": [
+        0.12,
+        0.33999999999999997
+      ],
+      "n": 100
+    }
+  ],
+  "top_confusions": {
+    "ft_qwen": [
+      [
+        [
+          "tomato septoria leaf spot",
+          "tomato bacterial spot"
+        ],
+        6
+      ],
+      [
+        [
+          "potato early blight",
+          "potato late blight"
+        ],
+        5
+      ],
+      [
+        [
+          "tomato bacterial spot",
+          "tomato septoria leaf spot"
+        ],
+        5
+      ],
+      [
+        [
+          "corn gray leaf spot",
+          "corn leaf blight"
+        ],
+        4
+      ],
+      [
+        [
+          "tomato early blight",
+          "potato early blight"
+        ],
+        4
+      ],
+      [
+        [
+          "potato early blight",
+          "tomato early blight"
+        ],
+        2
+      ],
+      [
+        [
+          "tomato healthy",
+          "bell pepper healthy"
+        ],
+        2
+      ],
+      [
+        [
+          "tomato late blight",
+          "tomato leaf mold"
+        ],
+        2
+      ]
+    ],
+    "base_qwen_zs": [
+      [
+        [
+          "tomato bacterial spot",
+          "tomato early blight"
+        ],
+        8
+      ],
+      [
+        [
+          "tomato yellow leaf curl virus",
+          "tomato mosaic virus"
+        ],
+        8
+      ],
+      [
+        [
+          "tomato septoria leaf spot",
+          "tomato early blight"
+        ],
+        6
+      ],
+      [
+        [
+          "potato early blight",
+          "potato late blight"
+        ],
+        5
+      ],
+      [
+        [
+          "corn gray leaf spot",
+          "corn leaf blight"
+        ],
+        4
+      ],
+      [
+        [
+          "potato early blight",
+          "tomato late blight"
+        ],
+        4
+      ],
+      [
+        [
+          "potato late blight",
+          "tomato late blight"
+        ],
+        4
+      ],
+      [
+        [
+          "apple scab",
+          "apple healthy"
+        ],
+        3
+      ]
+    ],
+    "inkling_e0": [
+      [
+        [
+          "corn leaf blight",
+          "corn gray leaf spot"
+        ],
+        16
+      ],
+      [
+        [
+          "tomato septoria leaf spot",
+          "tomato early blight"
+        ],
+        6
+      ],
+      [
+        [
+          "bell pepper leaf spot",
+          "tomato early blight"
+        ],
+        5
+      ],
+      [
+        [
+          "corn leaf blight",
+          "corn rust"
+        ],
+        5
+      ],
+      [
+        [
+          "tomato bacterial spot",
+          "tomato early blight"
+        ],
+        5
+      ],
+      [
+        [
+          "tomato leaf mold",
+          "tomato early blight"
+        ],
+        5
+      ],
+      [
+        [
+          "apple rust",
+          "grape black rot"
+        ],
+        4
+      ],
+      [
+        [
+          "blueberry healthy",
+          "cherry healthy"
+        ],
+        4
+      ]
+    ],
+    "inkling_e05": [
+      [
+        [
+          "corn leaf blight",
+          "corn gray leaf spot"
+        ],
+        3
+      ],
+      [
+        [
+          "potato early blight",
+          "grape black rot"
+        ],
+        3
+      ],
+      [
+        [
+          "peach healthy",
+          "cherry healthy"
+        ],
+        2
+      ],
+      [
+        [
+          "potato late blight",
+          "grape black rot"
+        ],
+        2
+      ],
+      [
+        [
+          "tomato mosaic virus",
+          "grape healthy"
+        ],
+        2
+      ],
+      [
+        [
+          "apple healthy",
+          "grape healthy"
+        ],
+        1
+      ],
+      [
+        [
+          "apple rust",
+          "tomato early blight"
+        ],
+        1
+      ],
+      [
+        [
+          "apple rust",
+          "grape black rot"
+        ],
+        1
+      ]
+    ]
+  },
+  "per_class_f1": {
+    "ft_qwen": {
+      "apple healthy": 1.0,
+      "apple rust": 0.9090909090909091,
+      "apple scab": 0.7619047619047619,
+      "bell pepper healthy": 0.7777777777777778,
+      "bell pepper leaf spot": 0.7142857142857143,
+      "blueberry healthy": 0.9629629629629629,
+      "cherry healthy": 1.0,
+      "corn gray leaf spot": 0.5714285714285714,
+      "corn leaf blight": 0.8936170212765957,
+      "corn rust": 0.9629629629629629,
+      "grape black rot": 0.9411764705882353,
+      "grape healthy": 1.0,
+      "peach healthy": 1.0,
+      "potato early blight": 0.4,
+      "potato late blight": 0.7142857142857143,
+      "raspberry healthy": 0.9333333333333333,
+      "soybean healthy": 0.8235294117647058,
+      "squash powdery mildew": 0.9696969696969697,
+      "strawberry healthy": 0.9565217391304348,
+      "tomato bacterial spot": 0.25,
+      "tomato early blight": 0.4,
+      "tomato healthy": 0.6666666666666666,
+      "tomato late blight": 0.782608695652174,
+      "tomato leaf mold": 0.5714285714285714,
+      "tomato mosaic virus": 0.8333333333333334,
+      "tomato septoria leaf spot": 0.5882352941176471,
+      "tomato yellow leaf curl virus": 0.8
+    },
+    "base_qwen_zs": {
+      "apple healthy": 0.7142857142857143,
+      "apple rust": 0.8181818181818182,
+      "apple scab": 0.5882352941176471,
+      "bell pepper healthy": 0.6666666666666666,
+      "bell pepper leaf spot": 0.6666666666666666,
+      "blueberry healthy": 0.88,
+      "cherry healthy": 0.9333333333333333,
+      "corn gray leaf spot": 0.6153846153846154,
+      "corn leaf blight": 0.8085106382978723,
+      "corn rust": 0.8571428571428571,
+      "grape black rot": 1.0,
+      "grape healthy": 1.0,
+      "peach healthy": 1.0,
+      "potato early blight": 0.11764705882352941,
+      "potato late blight": 0.3157894736842105,
+      "raspberry healthy": 0.9285714285714286,
+      "soybean healthy": 0.9333333333333333,
+      "squash powdery mildew": 0.8888888888888888,
+      "strawberry healthy": 0.9565217391304348,
+      "tomato bacterial spot": 0.1111111111111111,
+      "tomato early blight": 0.4,
+      "tomato healthy": 0.625,
+      "tomato late blight": 0.5142857142857142,
+      "tomato leaf mold": 0.16666666666666666,
+      "tomato mosaic virus": 0.36363636363636365,
+      "tomato septoria leaf spot": 0.5833333333333334,
+      "tomato yellow leaf curl virus": 0.16666666666666666
+    },
+    "inkling_e0": {
+      "apple healthy": 0.8333333333333334,
+      "apple rust": 0.5263157894736842,
+      "apple scab": 0.3333333333333333,
+      "bell pepper healthy": 0.7058823529411765,
+      "bell pepper leaf spot": 0.36363636363636365,
+      "blueberry healthy": 0.5263157894736842,
+      "cherry healthy": 0.4444444444444444,
+      "corn gray leaf spot": 0.4,
+      "corn leaf blight": 0.0,
+      "corn rust": 0.6206896551724138,
+      "grape black rot": 0.3333333333333333,
+      "grape healthy": 0.7272727272727273,
+      "peach healthy": 0.7,
+      "potato early blight": 0.0,
+      "potato late blight": 0.375,
+      "raspberry healthy": 0.8888888888888888,
+      "soybean healthy": 0.9333333333333333,
+      "squash powdery mildew": 0.7619047619047619,
+      "strawberry healthy": 0.96,
+      "tomato bacterial spot": 0.14285714285714285,
+      "tomato early blight": 0.3111111111111111,
+      "tomato healthy": 0.47058823529411764,
+      "tomato late blight": 0.5294117647058824,
+      "tomato leaf mold": 0.23529411764705882,
+      "tomato mosaic virus": 0.0,
+      "tomato septoria leaf spot": 0.3,
+      "tomato yellow leaf curl virus": 0.0
+    }
+  }
+}

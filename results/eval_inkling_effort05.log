@@ -1,0 +1,39 @@
+[inkling_zs_effort0.5] 100 items in 51.3s
+{
+  "model": "inkling_zs_effort0.5",
+  "model_id": "thinkingmachines/Inkling",
+  "n": 100,
+  "errors": 0,
+  "concurrency": 8,
+  "acc_strict": 0.58,
+  "acc_strict_ci95": [
+    0.48,
+    0.67
+  ],
+  "macro_f1_strict": 0.5156672545561434,
+  "invalid_rate_strict": 0.0,
+  "acc_lenient": 0.58,
+  "acc_lenient_ci95": [
+    0.48,
+    0.67
+  ],
+  "macro_f1_lenient": 0.5156672545561434,
+  "invalid_rate_lenient": 0.0,
+  "latency_mean_s": 3.6226703669499694,
+  "latency_p50_s": 3.347275597499902,
+  "latency_p95_s": 5.562808458548351,
+  "mean_prompt_tokens": 295.45,
+  "mean_image_tokens": 120.45,
+  "mean_cached_tokens": 147.2,
+  "mean_output_tokens": 90.39,
+  "eval_usd": 0.07553055,
+  "usd_per_1k_photos": 0.7553055000000001,
+  "usd_per_1k_correct": 1.3022508620689657,
+  "subset": "inkling_subset"
+}
+| model | subset | n | acc (lenient) [95% CI] | acc strict | macro-F1 | invalid | p50 s | p95 s | mean s | $/1k photos | $/1k correct |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| inkling_zs_effort0.5 | inkling_subset | 100 | 0.580 [0.480, 0.670] | 0.580 | 0.516 | 0.000 | 3.35 | 5.56 | 3.62 | 0.755 | 1.302 |
+
+Total eval spend (estimated from token counts): $0.0755
+wrote /workspace/fieldsight-garden/results/eval-20261006-092813

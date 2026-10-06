@@ -1,0 +1,34 @@
+{
+  "source": "https://github.com/pratikkayal/PlantDoc-Dataset (commit 5467f60, 2021-05-02)",
+  "license": "CC BY 4.0",
+  "raw_images_decoded": 2576,
+  "unreadable": 0,
+  "dropped_classes": {
+    "Tomato two spotted spider mites leaf": 2
+  },
+  "duplicate_groups": 66,
+  "duplicate_groups_conflicting_labels": 32,
+  "duplicate_groups_spanning_original_train_test": 14,
+  "removed_images": {
+    "duplicate_same_label": 34,
+    "duplicate_with_conflicting_labels": 66
+  },
+  "dhash_threshold": 4,
+  "kept_images": 2476,
+  "num_classes": 27,
+  "splits": {
+    "test": 300,
+    "train": 2026,
+    "val": 150
+  },
+  "seed": 20261006,
+  "max_side": 512,
+  "mean_resized_wh": [
+    455.64337641357025,
+    386.6922455573506
+  ],
+  "approx_qwen_image_tokens_mean": 172.68699515347333,
+  "approx_qwen_image_tokens_p95": 240.0,
+  "min_class_train": 44,
+  "max_class_train": 149
+}

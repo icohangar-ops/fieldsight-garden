@@ -1,0 +1,74 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[base_qwen_zs] 300 items in 99.9s
+{
+  "model": "base_qwen_zs",
+  "model_id": "Qwen/Qwen3.6-35B-A3B",
+  "n": 300,
+  "errors": 0,
+  "concurrency": 8,
+  "acc_strict": 0.6766666666666666,
+  "acc_strict_ci95": [
+    0.6233333333333333,
+    0.7266666666666667
+  ],
+  "macro_f1_strict": 0.6525873845262545,
+  "invalid_rate_strict": 0.0,
+  "acc_lenient": 0.6766666666666666,
+  "acc_lenient_ci95": [
+    0.6233333333333333,
+    0.7266666666666667
+  ],
+  "macro_f1_lenient": 0.6525873845262545,
+  "invalid_rate_lenient": 0.0,
+  "latency_mean_s": 2.6335378269366627,
+  "latency_p50_s": 2.3720206304988096,
+  "latency_p95_s": 3.533388902897241,
+  "mean_prompt_tokens": 352.3833333333333,
+  "mean_image_tokens": 175.38333333333333,
+  "mean_cached_tokens": 174.93333333333334,
+  "mean_output_tokens": 5.003333333333333,
+  "eval_usd": 0.036418574999999995,
+  "usd_per_1k_photos": 0.12139525,
+  "usd_per_1k_correct": 0.17940184729064038,
+  "subset": "full"
+}
+[inkling_zs_effort0.0] 300 items in 98.9s
+{
+  "model": "inkling_zs_effort0.0",
+  "model_id": "thinkingmachines/Inkling",
+  "n": 300,
+  "errors": 0,
+  "concurrency": 8,
+  "acc_strict": 0.49666666666666665,
+  "acc_strict_ci95": [
+    0.44,
+    0.5533333333333333
+  ],
+  "macro_f1_strict": 0.4614260012486054,
+  "invalid_rate_strict": 0.013333333333333334,
+  "acc_lenient": 0.49666666666666665,
+  "acc_lenient_ci95": [
+    0.44,
+    0.5533333333333333
+  ],
+  "macro_f1_lenient": 0.46010912882062194,
+  "invalid_rate_lenient": 0.006666666666666667,
+  "latency_mean_s": 2.607364003766549,
+  "latency_p50_s": 2.371144455000831,
+  "latency_p95_s": 3.5495683652477967,
+  "mean_prompt_tokens": 292.24666666666667,
+  "mean_image_tokens": 119.24666666666667,
+  "mean_cached_tokens": 169.81333333333333,
+  "mean_output_tokens": 7.906666666666666,
+  "eval_usd": 0.098839116,
+  "usd_per_1k_photos": 0.32946372,
+  "usd_per_1k_correct": 0.6633497718120805,
+  "subset": "full"
+}
+| model | subset | n | acc (lenient) [95% CI] | acc strict | macro-F1 | invalid | p50 s | p95 s | mean s | $/1k photos | $/1k correct |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| base_qwen_zs | full | 300 | 0.677 [0.623, 0.727] | 0.677 | 0.653 | 0.000 | 2.37 | 3.53 | 2.63 | 0.121 | 0.179 |
+| inkling_zs_effort0.0 | full | 300 | 0.497 [0.440, 0.553] | 0.497 | 0.460 | 0.007 | 2.37 | 3.55 | 2.61 | 0.329 | 0.663 |
+
+Total eval spend (estimated from token counts): $0.1353
+wrote /workspace/fieldsight-garden/results/eval-20261006-091839
