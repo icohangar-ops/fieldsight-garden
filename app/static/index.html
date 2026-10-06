@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#143d2c">
+  <meta name="description" content="Snap one leaf. FieldSight names the plant and the disease, then reads a 3-step fix aloud.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="FieldSight">
+  <title>FieldSight Garden</title>
+  <style>
+    :root {
+      --ink: #1a2e22;
+      --muted: #3e5346;
+      --leaf: #1f6b45;
+      --leaf-deep: #143d2c;
+      --mist: #e4f0dc;
+      --soil: #efe4d2;
+      --paper: #fbf7ef;
+      --line: #d5cbb8;
+      --sun: #f0c36a;
+      --clay: #8a3d2b;
+      --clay-bg: #f6e4da;
+      --ok-bg: #dcecde;
+      --shadow: 0 12px 32px rgba(26, 46, 34, 0.08);
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 480px at 50% -10%, #f7f3e4 0%, transparent 60%),
+        linear-gradient(180deg, var(--mist) 0%, var(--soil) 100%);
+      font-family: "Avenir Next", "Segoe UI", "Gill Sans", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: 0;
+    }
+    .skip:focus { left: 1rem; z-index: 2; background: white; padding: 0.5rem; }
+    .wrap {
+      width: min(34rem, 100%);
+      margin: 0 auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: 1.1rem 1.15rem calc(1.25rem + env(safe-area-inset-bottom));
+    }
+    main {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .brand { display: flex; gap: 0.75rem; align-items: center; }
+    .brand svg { width: 2.6rem; height: 2.6rem; flex: none; }
+    .mark {
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--leaf);
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0;
+      font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .today {
+      margin: 0;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .banner {
+      margin: 0 0 1rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.9rem;
+      background: #fff8e8;
+      border: 1px solid #e6d3a2;
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+    h2 {
+      margin: 0 0 0.4rem;
+      font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      font-size: 2.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .lede { margin: 0 0 1rem; color: var(--muted); }
+    main > * { width: 100%; min-width: 0; }
+    .preview {
+      width: 100%;
+      margin: 0 0 1rem;
+      border-radius: 1.1rem;
+      overflow: hidden;
+      background: #dfe8d4;
+      box-shadow: var(--shadow);
+    }
+    .preview img {
+      display: block;
+      width: 100%;
+      min-width: 100%;
+      height: 12rem;
+      object-fit: cover;
+      object-position: center;
+    }
+    .working {
+      margin: 0 0 1rem;
+      padding: 1.1rem 1rem;
+      border-radius: 1rem;
+      background: var(--paper);
+      text-align: center;
+      font-weight: 650;
+    }
+    .working span {
+      display: inline-block;
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-left: 0.35rem;
+      border-radius: 50%;
+      background: var(--leaf);
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: 0.25; } }
+    .card, .finish {
+      background: var(--paper);
+      border-radius: 1.25rem;
+      padding: 1.15rem 1.1rem 1.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+    }
+    .card { border-color: #e7cfc4; }
+    .card.is-healthy { border-color: #b7d4be; }
+    .plant {
+      margin: 0;
+      font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+      font-size: 2.6rem;
+      line-height: 1.05;
+      font-weight: 600;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.7rem 0 1rem; }
+    .chip {
+      margin: 0;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: var(--clay-bg);
+      color: var(--clay);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .card.is-healthy .chip.condition { background: var(--ok-bg); color: var(--leaf-deep); }
+    .chip.quiet { background: transparent; color: var(--muted); font-weight: 600; padding-left: 0; }
+    ol.steps, ol.finish-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+    ol.steps li, ol.finish-steps li { display: flex; gap: 0.75rem; align-items: flex-start; }
+    ol.steps p, ol.finish-steps p { margin: 0; }
+    .num {
+      flex: none;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--leaf-deep);
+      color: white;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .sources { display: flex; flex-direction: column; gap: 0.25rem; margin: 1rem 0 0.6rem; }
+    .sources a { color: var(--leaf-deep); }
+    .disclaimer, .fine, .credit { color: var(--muted); font-size: 0.92rem; }
+    .disclaimer { margin: 0; }
+    .error {
+      margin: 0 0 0.8rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.9rem;
+      background: #fde8e4;
+      color: #6d2418;
+    }
+    .dock {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+    button, .shutter, .texty {
+      font: inherit;
+      border: 0;
+      cursor: pointer;
+      text-align: center;
+    }
+    .shutter, .texty { position: relative; }
+    .shutter .file, .texty .file {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      overflow: visible;
+      clip: auto;
+      cursor: pointer;
+    }
+    .shutter, button.primary, button.sun {
+      min-height: 4.4rem;
+      border-radius: 999px;
+      padding: 0.8rem 1.2rem;
+      font-size: 1.28rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .shutter, button.primary { background: var(--leaf); color: white; }
+    button.sun { background: var(--sun); color: var(--leaf-deep); }
+    .shutter:active, button:active { transform: translateY(1px); }
+    .texty, button.ghost {
+      background: transparent;
+      color: var(--leaf-deep);
+      font-weight: 700;
+      min-height: 2.75rem;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+    .file {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .fine { text-align: center; margin: 0; }
+    :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+    .how { margin-top: 2.4rem; }
+    .how h2 { font-size: 1.8rem; }
+    .how h3 {
+      margin: 1.4rem 0 0.4rem;
+      font-size: 1.25rem;
+    }
+    .how ol.plain { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+    .how ol.plain li { margin: 0.35rem 0; }
+    .scores {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.8rem 0 1rem;
+    }
+    .score {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      background: var(--paper);
+      border-radius: 0.9rem;
+    }
+    .score strong { font-variant-numeric: tabular-nums; }
+    .score small { display: block; color: var(--muted); font-size: 0.85rem; }
+    .chart {
+      width: 100%;
+      height: auto;
+      border-radius: 0.9rem;
+      background: white;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0.6rem 0 1rem;
+      background: var(--paper);
+      border-radius: 0.9rem;
+    }
+    table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+    th, td { text-align: left; padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); }
+    caption { caption-side: bottom; text-align: left; padding: 0.5rem 0.55rem 0.7rem; color: var(--muted); font-size: 0.85rem; }
+    .finish h2 { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .finish-steps { font-size: 1.2rem; }
+    a { color: var(--leaf-deep); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the photo</a>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path fill="#1f6b45" d="M32 4c2.2 12 9 18.5 20 22.5C41 30 34.5 38 32 52 29.5 38 23 30 12 26.5 23 22.5 29.8 16 32 4z"/>
+          <path d="M32 16v30" stroke="#fbf7ef" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <p class="mark">FieldSight</p>
+          <h1>Garden</h1>
+        </div>
+      </div>
+      <p id="today" class="today">…</p>
+    </header>
+
+    <p id="demo" class="banner" hidden>Demo mode. Any photo returns a sample fix so you can try the screens. Connect the model to name a real leaf.</p>
+    <p id="waking" class="banner" hidden>The model is waking up. You can wait, then snap a leaf.</p>
+
+    <main id="main">
+      <section id="hero">
+        <h2>One leaf. Then put the phone down.</h2>
+        <p class="lede">Snap a photo. Hear the plant, the problem, and three steps.</p>
+      </section>
+
+      <figure id="preview" class="preview" hidden>
+        <img id="preview-img" alt="The leaf you just photographed">
+      </figure>
+
+      <p id="working" class="working" hidden>Looking at the leaf<span></span></p>
+
+      <article id="result" class="card" hidden>
+        <h2 id="plant" class="plant"></h2>
+        <div class="chips">
+          <p id="condition" class="chip condition"></p>
+          <p id="kind" class="chip quiet" hidden></p>
+          <p id="confidence" class="chip quiet" hidden></p>
+        </div>
+        <ol id="steps" class="steps"></ol>
+        <div id="sources" class="sources"></div>
+        <p id="disclaimer" class="disclaimer"></p>
+      </article>
+
+      <section id="finish" class="finish" hidden>
+        <p class="mark">Phone down</p>
+        <h2>Done. Go outside.</h2>
+        <ol id="finish-steps" class="finish-steps"></ol>
+        <p class="fine">Your photo was used once, then discarded.</p>
+      </section>
+
+      <p id="error" class="error" role="alert" hidden></p>
+      <button id="retry" class="ghost" type="button" hidden>Try this photo again</button>
+
+      <div class="dock" id="dock">
+        <label class="shutter" id="shutter">
+          <input id="camera" class="file" type="file" accept="image/*" capture="environment">
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 8h3l1.5-2h7L17 8h3v11H4V8z" stroke-linejoin="round"/>
+            <circle cx="12" cy="13" r="3.2"/>
+          </svg>
+          Snap a leaf
+        </label>
+        <label class="texty" id="library">
+          <input id="file" class="file" type="file" accept="image/*">
+          Choose a saved photo
+        </label>
+        <button id="speak" class="sun" type="button" hidden>Read it aloud</button>
+        <button id="done" class="primary" type="button" hidden>Done, go outside</button>
+        <button id="again" class="primary" type="button" hidden>Another leaf</button>
+        <p id="privacy" class="fine">Your photo is used once to name the leaf, then discarded.</p>
+      </div>
+    </main>
+
+    <section class="how" id="how">
+      <h2>How it works</h2>
+      <ol class="plain">
+        <li>You photograph one leaf.</li>
+        <li>A small open model names the plant and the disease.</li>
+        <li>Three steps from university extension guides are read aloud. Then the phone goes away.</li>
+      </ol>
+
+      <h3>Why an open model</h3>
+      <p>The fine-tuned Qwen3.6-35B-A3B, a mixture-of-experts model with about 3B parameters active, learned the 27 PlantDoc classes with a LoRA adapter. On 300 held-out photos it is more accurate than the same model untuned, and more accurate than Inkling, at a lower price per thousand photos. The checkpoint stays on Tinker. A leaf photo does not have to go through a closed vision API.</p>
+
+      <div class="scores">
+        <div class="score"><span>Fine-tuned Qwen3.6<small>LoRA, ours</small></span><strong>79.7%<small>$0.098 / 1k</small></strong></div>
+        <div class="score"><span>Base Qwen3.6<small>zero-shot</small></span><strong>67.7%<small>$0.121 / 1k</small></strong></div>
+        <div class="score"><span>Inkling<small>zero-shot, effort 0</small></span><strong>49.7%<small>$0.329 / 1k</small></strong></div>
+      </div>
+      <p>That is about $0.10 versus $0.12 versus $0.33 per thousand photos. Median latency is about 2.4 seconds for all three. Training the adapter cost about $1.47.</p>
+
+      <img class="chart" src="/chart.png" alt="Bar chart of test accuracy and dollars per thousand photos for fine-tuned Qwen3.6, base Qwen3.6, and Inkling." loading="lazy">
+
+      <div class="table-wrap">
+        <table>
+          <caption>Full test set, 300 images, never used for training or checkpoint choice. Accuracy includes the 95% bootstrap interval.</caption>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy</th>
+              <th>Macro-F1</th>
+              <th>Invalid</th>
+              <th>p50</th>
+              <th>p95</th>
+              <th>$ / 1k</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Qwen3.6-35B-A3B + LoRA</td>
+              <td>79.7% [75.0, 84.0]</td>
+              <td>0.785</td>
+              <td>0.0%</td>
+              <td>2.42 s</td>
+              <td>3.38 s</td>
+              <td>$0.098</td>
+            </tr>
+            <tr>
+              <td>Qwen3.6-35B-A3B base, zero-shot</td>
+              <td>67.7% [62.3, 72.7]</td>
+              <td>0.653</td>
+              <td>0.0%</td>
+              <td>2.37 s</td>
+              <td>3.53 s</td>
+              <td>$0.121</td>
+            </tr>
+            <tr>
+              <td>Inkling, zero-shot, effort 0</td>
+              <td>49.7% [44.0, 55.3]</td>
+              <td>0.460</td>
+              <td>0.7%</td>
+              <td>2.37 s</td>
+              <td>3.55 s</td>
+              <td>$0.329</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>PlantDoc</h3>
+      <p class="credit">Leaf classes come from the PlantDoc dataset by Singh, Jain, Jain, Kayal, Kumawat, and Batra (ACM IKDD CoDS and COMAD, 2020), used under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>. Source: <a href="https://github.com/pratikkayal/PlantDoc-Dataset">pratikkayal/PlantDoc-Dataset</a>. The dataset authors collected images from the web. Some near-duplicate and noisy labels remain, so a single photo can be wrong.</p>
+
+      <h3>Extension sources</h3>
+      <p class="credit">Each fix is a short paraphrase of a university extension page, linked on the result card. It is general guidance for home gardeners, not a visit from that office. Confirm with your local extension office before you remove plants or spray, and follow the pesticide label.</p>
+    </section>
+  </div>
+  <noscript><p class="wrap">FieldSight needs JavaScript to take a photo and read the steps aloud.</p></noscript>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const today = $("today");
+    const demo = $("demo");
+    const waking = $("waking");
+    const hero = $("hero");
+    const preview = $("preview");
+    const previewImg = $("preview-img");
+    const working = $("working");
+    const result = $("result");
+    const finish = $("finish");
+    const how = $("how");
+    const errorEl = $("error");
+    const retryBtn = $("retry");
+    const shutter = $("shutter");
+    const library = $("library");
+    const camera = $("camera");
+    const fileInput = $("file");
+    const speakBtn = $("speak");
+    const doneBtn = $("done");
+    const againBtn = $("again");
+    const privacy = $("privacy");
+    const TYPE_LABEL = { healthy: "Healthy", fungal: "Fungal", bacterial: "Bacterial", viral: "Viral", oomycete: "Oomycete" };
+
+    const state = { mode: "idle", data: null, speaking: false, heard: false, mock: false, ready: true };
+    let lastFile = null;
+    let previewUrl = "";
+    let busy = false;
+    let keepAlive = 0;
+    let lastMode = "idle";
+
+    function showCount(n) {
+      if (typeof n !== "number") {
+        today.textContent = "";
+        return;
+      }
+      today.textContent = n + " " + (n === 1 ? "diagnosis" : "diagnoses") + " today";
+    }
+
+    function showError(message) {
+      errorEl.hidden = !message;
+      errorEl.textContent = message || "";
+    }
+
+    function detailOf(payload) {
+      if (!payload) return "Something went wrong. Try one more photo.";
+      if (typeof payload.detail === "string") return payload.detail;
+      return "Choose a leaf photo and try again.";
+    }
+
+    function safeUrl(url) {
+      try {
+        const parsed = new URL(url);
+        if (parsed.protocol === "https:" || parsed.protocol === "http:") return parsed.href;
+      } catch (err) { /* ignore */ }
+      return "";
+    }
+
+    function fillList(list, steps) {
+      list.replaceChildren();
+      (steps || []).forEach((step, index) => {
+        const li = document.createElement("li");
+        const num = document.createElement("span");
+        num.className = "num";
+        num.textContent = String(index + 1);
+        const p = document.createElement("p");
+        p.textContent = step;
+        li.append(num, p);
+        list.append(li);
+      });
+    }
+
+    function showResult(data) {
+      state.data = data;
+      $("plant").textContent = data.plant || data.label || "Not sure";
+      const condition = $("condition");
+      condition.textContent = data.ok ? (data.condition || "") : "Try one leaf, closer, in daylight";
+      const kind = $("kind");
+      const typeLabel = TYPE_LABEL[data.type] || "";
+      kind.hidden = !typeLabel || typeLabel === data.condition;
+      kind.textContent = typeLabel;
+      const confidence = $("confidence");
+      if (typeof data.confidence === "number" && Number.isFinite(data.confidence)) {
+        const pct = data.confidence <= 1 ? Math.round(data.confidence * 100) : Math.round(data.confidence);
+        confidence.hidden = false;
+        confidence.textContent = pct + "% match";
+      } else {
+        confidence.hidden = true;
+        confidence.textContent = "";
+      }
+      result.classList.toggle("is-healthy", data.type === "healthy");
+      fillList($("steps"), data.steps);
+      fillList($("finish-steps"), data.steps);
+      const sources = $("sources");
+      sources.replaceChildren();
+      (data.sources || []).forEach((source) => {
+        const href = safeUrl(source.url);
+        if (!href) return;
+        const link = document.createElement("a");
+        link.href = href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = source.publisher ? source.publisher + " — " + source.title : source.title;
+        sources.append(link);
+      });
+      $("disclaimer").textContent = data.disclaimer || "";
+      if (typeof data.diagnoses_today === "number") showCount(data.diagnoses_today);
+    }
+
+    function scriptFor(data) {
+      const name = [data.plant, data.condition].filter(Boolean).join(". ");
+      const steps = (data.steps || []).map((step, index) => "Step " + (index + 1) + ". " + step).join(" ");
+      const caution = "This is general guidance. A photo can be wrong. Confirm with your local extension office before you remove plants or spray.";
+      return [name, steps, caution].filter(Boolean).join(" ");
+    }
+
+    function stopSpeech() {
+      state.speaking = false;
+      clearInterval(keepAlive);
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    }
+
+    function speak() {
+      if (!state.data) return;
+      if (state.speaking) {
+        stopSpeech();
+        paint();
+        return;
+      }
+      if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === "undefined") {
+        showError("This browser can't read aloud. The steps stay on the screen.");
+        return;
+      }
+      showError("");
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(scriptFor(state.data));
+      utterance.lang = "en-US";
+      utterance.rate = 0.95;
+      const done = () => {
+        state.speaking = false;
+        state.heard = true;
+        clearInterval(keepAlive);
+        paint();
+      };
+      utterance.onend = done;
+      utterance.onerror = done;
+      state.speaking = true;
+      state.heard = true;
+      window.speechSynthesis.speak(utterance);
+      clearInterval(keepAlive);
+      keepAlive = setInterval(() => {
+        if (!window.speechSynthesis.speaking) {
+          clearInterval(keepAlive);
+          return;
+        }
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }, 10000);
+      paint();
+    }
+
+    function paint() {
+      const mode = state.mode;
+      hero.hidden = mode === "result" || mode === "finish" || mode === "working";
+      working.hidden = mode !== "working";
+      result.hidden = mode !== "result";
+      finish.hidden = mode !== "finish";
+      how.hidden = mode === "finish" || mode === "working";
+      preview.hidden = !previewUrl || mode === "finish" || (mode === "idle" && errorEl.hidden);
+      shutter.hidden = mode === "result" || mode === "finish" || mode === "working";
+      library.hidden = shutter.hidden;
+      privacy.hidden = mode !== "idle";
+      speakBtn.hidden = mode !== "result" && mode !== "finish";
+      doneBtn.hidden = mode !== "result";
+      againBtn.hidden = mode !== "finish";
+      speakBtn.textContent = state.speaking ? "Stop" : (state.heard ? "Read it again" : "Read it aloud");
+      if (mode === "result" && lastMode !== "result") {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        result.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        speakBtn.focus();
+      }
+      if (mode === "finish" && lastMode !== "finish") {
+        finish.scrollIntoView({ block: "start" });
+      }
+      lastMode = mode;
+    }
+
+    function setPreview(file) {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = URL.createObjectURL(file);
+      previewImg.src = previewUrl;
+    }
+
+    async function submit(file) {
+      lastFile = file;
+      setPreview(file);
+      state.mode = "working";
+      showError("");
+      retryBtn.hidden = true;
+      stopSpeech();
+      paint();
+      const body = new FormData();
+      body.append("image", file, file.name || "leaf.jpg");
+      let response;
+      try {
+        response = await fetch("/api/diagnose", { method: "POST", body });
+      } catch (err) {
+        state.mode = "idle";
+        showError("Couldn't reach FieldSight. Check your connection and try once more.");
+        retryBtn.hidden = false;
+        return;
+      }
+      let payload = null;
+      try { payload = await response.json(); } catch (err) { payload = null; }
+      if (!response.ok) {
+        state.mode = "idle";
+        showError(detailOf(payload));
+        retryBtn.hidden = false;
+        return;
+      }
+      showResult(payload);
+      state.mode = "result";
+      state.heard = false;
+    }
+
+    async function onFile(event) {
+      const file = event.target.files && event.target.files[0];
+      event.target.value = "";
+      if (!file || busy) return;
+      busy = true;
+      try { await submit(file); }
+      finally {
+        busy = false;
+        paint();
+      }
+    }
+
+    function reset() {
+      stopSpeech();
+      state.mode = "idle";
+      state.data = null;
+      state.heard = false;
+      lastFile = null;
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = "";
+      previewImg.removeAttribute("src");
+      showError("");
+      retryBtn.hidden = true;
+      paint();
+    }
+
+    camera.addEventListener("change", onFile);
+    fileInput.addEventListener("change", onFile);
+    speakBtn.addEventListener("click", speak);
+    doneBtn.addEventListener("click", () => {
+      stopSpeech();
+      state.mode = "finish";
+      showError("");
+      paint();
+    });
+    againBtn.addEventListener("click", reset);
+    retryBtn.addEventListener("click", async () => {
+      if (!lastFile || busy) return;
+      busy = true;
+      try { await submit(lastFile); }
+      finally {
+        busy = false;
+        paint();
+      }
+    });
+
+    async function boot() {
+      try {
+        const [health, stats] = await Promise.all([
+          fetch("/health").then((response) => response.json()),
+          fetch("/api/stats").then((response) => response.json()),
+        ]);
+        state.mock = !!health.mock;
+        state.ready = !!health.ready;
+        demo.hidden = !health.mock;
+        if (!health.mock && health.failed) {
+          waking.hidden = false;
+          waking.textContent = health.detail || "The garden model is unavailable.";
+        } else if (!health.mock && !health.ready) {
+          waking.hidden = false;
+          waking.textContent = "The model is waking up. You can wait, then snap a leaf.";
+        }
+        showCount(stats.diagnoses_today);
+      } catch (err) {
+        showError("Couldn't reach FieldSight.");
+      }
+      paint();
+    }
+
+    paint();
+    boot();
+  </script>
+</body>
+</html>

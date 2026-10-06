@@ -1,0 +1,39 @@
+# FieldSight Garden. Apply from the repo root, then set TINKER_API_KEY in the dashboard.
+# The database is optional: delete `databases` and the DATABASE_URL entry to run without Postgres.
+# Counts then stay in memory on this instance. Photos are never stored.
+
+databases:
+  - name: fieldsight-db
+    plan: basic-256mb
+    region: oregon
+    databaseName: fieldsight
+    user: fieldsight
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: fieldsight-garden
+    runtime: python
+    plan: starter
+    region: oregon
+    branch: main
+    healthCheckPath: /health
+    buildCommand: >-
+      pip install -r requirements.txt
+      && mkdir -p /opt/render/project/src/.cache/huggingface
+      && HF_HOME=/opt/render/project/src/.cache/huggingface
+      python -c "from transformers import AutoTokenizer; AutoTokenizer.from_pretrained('Qwen/Qwen3.6-35B-A3B')"
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.5"
+      - key: TINKER_API_KEY
+        sync: false
+      - key: FIELDSIGHT_MODEL_PATH
+        value: tinker://f5090c0f-f54a-53c7-8aa7-e6486f065aef:train:0/sampler_weights/final
+      - key: HF_HOME
+        value: /opt/render/project/src/.cache/huggingface
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fieldsight-db
+          property: connectionString

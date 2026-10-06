@@ -1,0 +1,9 @@
+schema: spec-driven
+
+context: |
+  FieldSight Garden is a DEV Hacktoberfest 2026 Week 1 app ("Touch Grass").
+  A gardener photographs one leaf. The app names the plant and disease and
+  reads a 3-step fix aloud so they can put the phone away.
+  Diagnosis uses serving/fieldsight_infer.py (native Tinker SamplingClient).
+  Tinker's OpenAI-compatible endpoint rejects images for this checkpoint.
+  Fixes live in care/fixes.json. Results live in results/RESULTS.md.

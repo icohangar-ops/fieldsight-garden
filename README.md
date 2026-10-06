@@ -1,7 +1,79 @@
-# FieldSight Garden: data and harness
+# FieldSight Garden
 
-DEV Hacktoberfest 2026, Week 1 ("Touch Grass"). One leaf photo goes in, and the app returns the plant, the disease and a 3-step fix read aloud.
-This folder holds the data prep, the Tinker scripts (cost probe, LoRA train, eval) and the fix lookup table.
+DEV Hacktoberfest 2026, Week 1 ("Touch Grass"). Snap one leaf, hear the plant, the disease, and a 3-step fix, then put the phone down.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/icohangar-ops/fieldsight-garden)
+
+The live page is a phone-sized FastAPI app. It sends the photo to `serving/fieldsight_infer.py`, which calls the fine-tuned Qwen checkpoint through Tinker's native sampling client. The OpenAI-compatible endpoint rejects images for this model, so the service does not use it. Fixes come from `care/fixes.json`. Photos are discarded after the request. A daily count (label, latency, timestamp) is stored only when `DATABASE_URL` is set.
+
+## Run the app
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements-dev.txt          # mock mode: no tinker, no torch, no API key
+FIELDSIGHT_MOCK=1 uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+Open http://localhost:8000 . Snap or upload any photo. Mock mode returns a real fix from the table and says so on the page. The label is a hash of the image, so the same photo stays stable.
+
+To call the fine-tuned model, install the serving dependencies and set the key (see `.env.example`). Do not install `tinker[torch]`.
+
+```bash
+pip install -r requirements.txt
+export TINKER_API_KEY=...                    # account that can sample the checkpoint
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+`FIELDSIGHT_MODEL_PATH` overrides the checkpoint. The default is `results/serving.json`.
+
+```bash
+curl -s localhost:8000/health
+curl -F image=@leaf.jpg localhost:8000/api/diagnose
+```
+
+Tests stay in mock mode:
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+## Results
+
+300 held-out PlantDoc photos. The fine-tuned model is the most accurate and the cheapest. Full write-up: `results/RESULTS.md`. Chart: `results/chart.png`.
+
+| model | n | accuracy [95% CI] | macro-F1 | invalid | p50 latency | p95 latency | $ / 1k photos | cost vs FT |
+|---|---|---|---|---|---|---|---|---|
+| Qwen3.6-35B-A3B + LoRA (ours) | 300 | **79.7%** [75.0, 84.0] | 0.785 | 0.0% | 2.42 s | 3.38 s | $0.098 | 1.0× |
+| Qwen3.6-35B-A3B base (zero-shot) | 300 | **67.7%** [62.3, 72.7] | 0.653 | 0.0% | 2.37 s | 3.53 s | $0.121 | 1.2× |
+| Inkling (zero-shot, effort 0) | 300 | **49.7%** [44.0, 55.3] | 0.460 | 0.7% | 2.37 s | 3.55 s | $0.329 | 3.4× |
+
+About **$0.10** vs **$0.12** vs **$0.33** per thousand photos. Median latency is about 2.4 s for all three. Training the LoRA cost about $1.47.
+
+## Deploy to Render
+
+Use the button above, or in the Render dashboard choose **New → Blueprint** and point it at this repo. The blueprint is `render.yaml`:
+
+- Python web service, starter plan, health check `GET /health`, branch `main`.
+- `TINKER_API_KEY` is `sync: false`. Render asks for the value at create time. It is not in the repo.
+- `FIELDSIGHT_MODEL_PATH` is the final sampler checkpoint.
+- The build downloads the Qwen tokenizer into `HF_HOME` so the first request does not wait on Hugging Face.
+- Optional Postgres (`basic-256mb`). Delete the `databases` block and the `DATABASE_URL` entry to run without a database. Diagnosis still works. "Diagnoses today" then counts this process only.
+
+After the first deploy, `GET /health` returns `"ready": false` until the sampling client has loaded, then `"ready": true`. The page loads during that wait. A photo sent early gets HTTP 503 and can be retried.
+
+### Deploy notes
+
+- **Tokenizer size.** `tokenizer.json` for `Qwen/Qwen3.6-35B-A3B` is about 13 MB. `vocab.json` is about 6.7 MB and `merges.txt` about 3.4 MB if a slow tokenizer path also fetches them. The blueprint prefetches whatever `AutoTokenizer.from_pretrained` needs during the build.
+- **Memory and cold start.** `tinker` depends on `transformers` and does not install torch unless you ask for the `torch` extra. Importing transformers, then opening the sampling client, is the slow part of boot and the main RAM user on a 512 MB starter. `/health` stays HTTP 200 while that happens so Render can mark the deploy live. If the process is killed during import, move the service to a larger plan.
+- **Images.** Keep the native client in `serving/fieldsight_infer.py`. The OpenAI-compatible URL returns HTTP 400 for images on this checkpoint.
+- **Access.** The checkpoint is private. The API key has to be allowed to sample that model path.
+- **Spend.** A public URL spends the key, about $0.0001 per photo at the measured rate. The service limits each IP (default 8/minute) and the process (default 60/minute).
+- **Postgres.** `basic-256mb` is the current small Render database. The schema still lists a `free` plan, and new workspaces often cannot provision it. Removing the database leaves a working app.
+
+## Data and harness
+
+This folder also holds the data prep, the Tinker scripts (cost probe, LoRA train, eval) and the fix lookup table.
 Model under test: `Qwen/Qwen3.6-35B-A3B` with a LoRA adapter, renderer `qwen3_5_disable_thinking`. Baselines: the same model untuned (zero-shot) and `thinkingmachines/Inkling` (zero-shot).
 
 ## Dataset: PlantDoc (cropped classification release)
@@ -81,8 +153,12 @@ Model under test: `Qwen/Qwen3.6-35B-A3B` with a LoRA adapter, renderer `qwen3_5_
 ## Files
 ```
 fieldsight-garden/
-  README.md                  this file (data card, commands, cost math)
-  requirements.lock.txt      uv pip freeze of .venv (Python 3.13.5)
+  README.md                  this file (app, data card, commands, cost math)
+  requirements.txt           web service runtime (tinker, no torch extra)
+  requirements-dev.txt       mock-mode tests, without tinker
+  render.yaml                Render blueprint (starter web service + optional Postgres)
+  app/                       FastAPI service and the garden page
+  requirements.lock.txt      uv pip freeze of the training .venv (Python 3.13.5)
   raw/PlantDoc-Dataset/      official clone (CC BY 4.0), untouched
   data/
     images/{train,val,test}/<class_slug>/<class_slug>__<md5[:10]>.jpg   resized, ≤512px

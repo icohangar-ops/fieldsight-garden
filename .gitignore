@@ -7,3 +7,6 @@ adapters/
 data/images/
 data/hf/
 .env
+.cache/
+.pytest_cache/
+.hf/
