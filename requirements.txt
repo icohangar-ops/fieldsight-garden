@@ -1,0 +1,8 @@
+# Web service runtime. tinker pulls transformers for the tokenizer.
+# Do not install the tinker[torch] extra. This service does not need torch.
+fastapi==0.142.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+pillow==12.3.0
+psycopg[binary]==3.3.6
+tinker==0.32.0

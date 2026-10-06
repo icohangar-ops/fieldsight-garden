@@ -1,0 +1,11 @@
+# Mock-mode tests and local UI runs. This file does not install tinker.
+# Render installs requirements.txt, which adds tinker==0.32.0 (no torch extra).
+fastapi==0.142.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+pillow==12.3.0
+psycopg[binary]==3.3.6
+pytest==9.1.1
+httpx==0.28.1
+jsonschema==4.26.0
+pyyaml==6.0.1
